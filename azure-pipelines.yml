@@ -45,6 +45,15 @@ steps:
     action: 'Build module images'
     templateFilePath: 'PyEdge/deployment.debug.template.json'
     defaultPlatform: 'amd64'
+- task: AzureIoTEdge@2
+  inputs:
+    action: 'Push module images'
+    containerregistrytype: 'Azure Container Registry'
+    azureSubscriptionEndpoint: 'JAPADMAN Lab(881ac365-d417-4791-b2a9-48789acbb88d)'
+    azureContainerRegistry: '{"loginServer":"paddycontainers.azurecr.io", "id" : "/subscriptions/881ac365-d417-4791-b2a9-48789acbb88d/resourceGroups/acrRG/providers/Microsoft.ContainerRegistry/registries/paddycontainers"}'
+    templateFilePath: 'PyEdge/deployment.debug.template.json'
+    defaultPlatform: 'amd64'
+    fillRegistryCredential: 'true'
 - task: CopyFiles@2
   inputs:
     Contents: |
