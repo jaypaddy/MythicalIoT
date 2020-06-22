@@ -11,8 +11,8 @@
             "loggingOptions": "",
             "registryCredentials": {
               "paddycontainers": {
-                "username": "$CONTAINER_REGISTRY_USERNAME_paddycontainers",
-                "password": "$CONTAINER_REGISTRY_PASSWORD_paddycontainers",
+                "username": "${ACR_USER}",
+                "password": "${ACR_PASSWORD}",
                 "address": "paddycontainers.azurecr.io"
               }
             }
