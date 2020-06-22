@@ -39,15 +39,16 @@ steps:
       sudo apt-get install -y --no-install-recommends libcurl4-openssl-dev libboost-python1.58-dev libpython3-dev
       python -m pip install setuptools
       python -m pip install ptvsd==4.1.3
+
 - task: AzureIoTEdge@2
   inputs:
     action: 'Build module images'
-    templateFilePath: 'deployment.template.json'
+    templateFilePath: 'deployment.debug.template.json'
     defaultPlatform: 'amd64'
 - task: CopyFiles@2
   inputs:
     Contents: |
-      deployment.template.json
+      deployment.debug.template.json
       **/module.json
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
 - task: PublishBuildArtifacts@1
