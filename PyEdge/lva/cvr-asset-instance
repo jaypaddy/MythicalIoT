@@ -1,0 +1,22 @@
+{
+  "@apiVersion": "1.0",
+  "name": "Sample-Graph-1",
+  "properties": {
+    "topologyName": "CVRToAMSAsset",
+    "description": "Sample graph description",
+    "parameters": [
+      {
+        "name": "rtspUrl",
+        "value": "rtsp://10.0.0.27"
+      },
+      {
+        "name": "rtspUserName",
+        "value": "admin"
+      },
+      {
+        "name": "rtspPassword",
+        "value": "GrandCam1913!"
+      }
+    ]
+  }
+}
