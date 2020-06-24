@@ -11,7 +11,7 @@ pool:
 
 variables:
 - name: PYMODULEVER
-  value: $Build.BuildId 
+  value: $(Build.BuildId)
 
 steps:
 
