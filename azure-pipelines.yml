@@ -23,6 +23,17 @@ steps:
     SecretsFilter: '*'
     RunAsPreJob: true
 
+- script: |
+    echo ACRPYMODULEREPO $ACRPYMODULEREPO
+    echo CRPYMODULEREPO $CRPYMODULEREPO
+    echo ACRUSER $ACRUSER
+    echo ACRPASSWORD $ACRPASSWORD
+    echo PYMODULEVER $PYMODULEVER
+    echo AMSARMID $AMSARMID
+    echo AMSAADTENANTID $AMSAADTENANTID
+    echo AMSAADAPPID $AMSAADAPPID
+    echo AMSAADSECRET $AMSAADSECRET
+
 - task: UsePythonVersion@0
   inputs:
     versionSpec: '3.7'
