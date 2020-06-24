@@ -9,23 +9,20 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
-variables:
-- name: ACR_ADDRESS
-  value: paddycontainers.azurecr.io
-- name: ACR_PASSWORD
-  value: Rfb1vT9QuW=x2v3Z37jKFYNCg11uoT9Y
-- name: ACR_USER
-  value: paddycontainers
-
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
 
 - script: |
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
+- task: AzureKeyVault@1
+  inputs:
+    azureSubscription: 'JAPADMAN Lab(881ac365-d417-4791-b2a9-48789acbb88d)'
+    KeyVaultName: 'mythicaledgekv'
+    SecretsFilter: '*'
+    RunAsPreJob: true
+
 - task: UsePythonVersion@0
   inputs:
     versionSpec: '3.7'
