@@ -9,6 +9,9 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
+variables:
+- name: PYMODULEVER
+  value: $Build.BuildId 
 
 steps:
 
@@ -24,11 +27,11 @@ steps:
     RunAsPreJob: true
 
 - script: |
-    echo ACRPYMODULEREPO $(ACRPYMODULEREPO)
+    echo PYMODULEVER $(PYMODULEVER)
     echo ACRPYMODULEREPO $(ACRPYMODULEREPO)
     echo ACRUSER $(ACRUSER)
     echo ACRPASSWORD $(ACRPASSWORD)
-    echo PYMODULEVER $(PYMODULEVER)
+    echo ACRPYMODULEVER $(ACRPYMODULEVER)
     echo AMSARMID $(AMSARMID)
     echo AMSAADTENANTID $(AMSAADTENANTID)
     echo AMSAADAPPID $(AMSAADAPPID)
