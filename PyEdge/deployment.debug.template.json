@@ -11,8 +11,8 @@
             "loggingOptions": "",
             "registryCredentials": {
               "paddycontainers": {
-                "username": "${ACR_USER}",
-                "password": "${ACR_PASSWORD}",
+                "username": "${ACRUSER}",
+                "password": "${ACRPASSWORD}",
                 "address": "paddycontainers.azurecr.io"
               }
             }
@@ -119,10 +119,10 @@
     "lvaEdge": {
       "properties.desired": {
         "applicationDataDirectory": "/var/lib/azuremediaservices",
-        "azureMediaServicesArmId": "/subscriptions/881ac365-d417-4791-b2a9-48789acbb88d/resourceGroups/lva-sample-resources/providers/microsoft.media/mediaservices/lvasampleli77gez6nvpys",
-        "aadTenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47",
-        "aadServicePrincipalAppId": "33a848ef-9ebd-4e16-a1f3-8835628d67d6",
-        "aadServicePrincipalSecret": "745e6b06-fb0e-4dac-b49a-24462a2ea574",
+        "azureMediaServicesArmId": "${AMSARMID}",
+        "aadTenantId": "${AMSAADTENANTID}",
+        "aadServicePrincipalAppId": "${AMSAADAPPID}",
+        "aadServicePrincipalSecret": "${AMSAADSECRET}",
         "aadEndpoint": "https://login.microsoftonline.com",
         "aadResourceId": "https://management.core.windows.net/",
         "armEndpoint": "https://management.azure.com/",

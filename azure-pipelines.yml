@@ -16,10 +16,6 @@ variables:
   value: Rfb1vT9QuW=x2v3Z37jKFYNCg11uoT9Y
 - name: ACR_USER
   value: paddycontainers
-- name: PYMODULE_VER
-  value: $Build.BuildId
-- name: ACR_PYMODULE_REPO
-  value: paddycontainers.azurecr.io/pysendmodule
 
 
 steps:
