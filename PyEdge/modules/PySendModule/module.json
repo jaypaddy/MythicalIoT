@@ -2,7 +2,7 @@
   "$schema-version": "0.0.1",
   "description": "",
   "image": {
-    "repository": "${ACRPYMODULEREPO}",
+    "repository": "${ACRPYMODULEREPO1}",
     "tag": {
       "version": "${PYMODULEVER}",
       "platforms": {

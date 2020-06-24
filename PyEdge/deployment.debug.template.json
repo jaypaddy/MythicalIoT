@@ -13,7 +13,7 @@
               "paddycontainers": {
                 "username": "${ACRUSER}",
                 "password": "${ACRPASSWORD}",
-                "address": "paddycontainers.azurecr.io"
+                "address": "${ACR}"
               }
             }
           }
