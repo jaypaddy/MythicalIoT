@@ -22,7 +22,7 @@
           "edgeAgent": {
             "type": "docker",
             "settings": {
-              "image": "mcr.microsoft.com/azureiotedge-agent:1.0",
+              "image": "mcr.microsoft.com/azureiotedge-agent:1.0.9.2",
               "createOptions": {}
             }
           },
@@ -31,27 +31,26 @@
             "status": "running",
             "restartPolicy": "always",
             "settings": {
-              "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
+              "image": "mcr.microsoft.com/azureiotedge-hub:1.0.9.2",
               "createOptions": {
                 "HostConfig": {
-                  "PortBindings": {
-                    "5671/tcp": [
-                      {
-                        "HostPort": "5671"
-                      }
-                    ],
-                    "8883/tcp": [
-                      {
-                        "HostPort": "8883"
-                      }
-                    ],
-                    "443/tcp": [
-                      {
-                        "HostPort": "443"
-                      }
-                    ]
+                  "ExposedPorts": {
+                    "9600/tcp": {
+                    },
+                    "5671/tcp": {
+                    },
+                    "8883/tcp": {
+                    }
                   }
                 }
+              }
+            },
+            "env":{
+              "experimentalfeatures__enabled": {
+                  "value": true
+              },
+              "experimentalfeatures__enableMetrics": {
+                  "value": true
               }
             }
           }
@@ -88,6 +87,24 @@
             "settings": {
               "image": "mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0",
               "createOptions": {}
+            }
+          },
+          "metricscollector": {
+            "version": "1.0",
+            "type": "docker",
+            "status": "running",
+            "restartPolicy": "always",
+            "settings": {
+              "image": "veyalla/metricscollector:0.0.4-amd64",
+              "createOptions": {}
+            },
+            "env":{
+              "AzMonWorkspaceId": {
+                  "value": "${AZMONWORKSPACEID}"
+              },
+              "AzMonWorkspaceKey": {
+                  "value": "${AZMONWORKSPACEKEY}"
+              }
             }
           },
           "lvaEdge": {
@@ -132,6 +149,17 @@
         "logCategories": "Application,Events",
         "allowUnsecuredEndpoints": true,
         "telemetryOptOut": false
+      }
+    },
+    "metricscollector": {
+      "properties.desired": {
+        "schemaVersion": "1.0",
+        "scrapeFrequencySecs": 300,
+        "metricsFormat": "Json",
+        "syncTarget": "AzureLogAnalytics",
+        "endpoints": {
+            "edgeHub": "http://edgeHub:9600/metrics"
+        }
       }
     }
   }

@@ -1,0 +1,31 @@
+<source>
+  type oms_omi
+  object_name "Physical Disk"
+  instance_regex ".*"
+  counter_name_regex ".*"
+  interval 5m
+</source>
+
+<source>
+  type oms_omi
+  object_name "Logical Disk"
+  instance_regex ".*
+  counter_name_regex ".*"
+  interval 5m
+</source>
+
+<source>
+  type oms_omi
+  object_name "Processor"
+  instance_regex ".*
+  counter_name_regex ".*"
+  interval 30s
+</source>
+
+<source>
+  type oms_omi
+  object_name "Memory"
+  instance_regex ".*"
+  counter_name_regex ".*"
+  interval 30s
+</source>
