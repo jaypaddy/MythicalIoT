@@ -58,10 +58,8 @@ async def main():
             time.sleep(5)
             i = i + 1
 
-
     # send `messages_to_send` messages in parallel
     await asyncio.gather(send_test_message(),input1_listener(), method1_listener())
-
 
     # finally, disconnect
     await module_client.disconnect()
