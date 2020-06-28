@@ -9,6 +9,9 @@ import asyncio
 import uuid
 from azure.iot.device.aio import IoTHubModuleClient
 from azure.iot.device import Message
+from azure.iot.device import MethodRequest
+from azure.iot.device import MethodResponse
+
 import time
 
 messages_to_send = 10
@@ -27,14 +30,17 @@ async def main():
             print("custom properties are")
             print(input_message.custom_properties)
 
-    # define behavior for receiving an input message on input1
+    # define behavior for receiving an method message on method
     async def method1_listener():
         while True:
-            input_message = await module_client.receive_method_request("method1")  # blocking call
+            methodReq = await module_client.receive_method_request("method1")  # blocking call
             print("the data in the message received on method1 was ")
-            print(input_message.data)
-            print("custom properties are")
-            print(input_message.custom_properties)
+            print("Request ID:",methodReq.request_id)
+            print("Name:",methodReq.name)
+            print("Payload:",methodReq.payload)
+
+            methodResponse =  MethodResponse.create_from_method_request(methodReq, 200, None)
+            await module_client.send_method_response(methodResponse)
 
     # Connect the client.
     await module_client.connect()
@@ -54,7 +60,7 @@ async def main():
 
 
     # send `messages_to_send` messages in parallel
-    await asyncio.gather(send_test_message(),input1_listener())
+    await asyncio.gather(send_test_message(),input1_listener(), method1_listener())
 
 
     # finally, disconnect
