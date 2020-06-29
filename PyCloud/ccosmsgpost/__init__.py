@@ -52,10 +52,10 @@ def sendDisplayMessage(msg):
                 }
     named_tuple = time.localtime() # get struct_time
     time_string = time.strftime("%m/%d/%Y, %H:%M:%S", named_tuple)
-    message_json = json.dumps(dict({'msg': msg, 'DtTm:' : time_string }))
+    message_json = json.dumps(dict({'msg': msg, 'dttm:' : time_string }))
     payload_json = json.dumps(dict({
                 "methodName": os.getenv('METHODNAME'),
-                "responseTimeoutInSeconds": os.getenv('TIMEOUT_SECS'),
+                "respetthodonseTimeoutInSeconds": os.getenv('TIMEOUT_SECS'),
                 "payload": message_json
             }))
     url = "https://{}.azure-devices.net/twins/{}/modules/{}/methods?api-version={}" \
@@ -80,8 +80,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
             msg = 'Welcome to Intelligent Edge'
         else:
             name = req_body.get('msg')
-    else:
-        msg = 'Welcome to Intelligent Edge'
+
 
     if msg:
         response = sendDisplayMessage(msg)
